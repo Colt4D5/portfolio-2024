@@ -8,6 +8,13 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	type Particle = {
+		x: number,
+		y: number,
+		radius: number,
+		update: () => void,
+		draw: () => void,
+	}
 }
 
 export {};
