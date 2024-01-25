@@ -16,8 +16,29 @@ declare global {
 			origY: number,
 		}
 		radius: number,
+		ctx: CanvasRenderingContext2D,
+		mouse: MouseController,
 		update: () => void,
 		draw: () => void,
+	}
+
+	type Canvas = {
+		position: {
+			x: number,
+			y: number,
+		}
+		size: {
+			w: number,
+			h: number,
+		}
+		canvas: HTMLCanvasElement,
+		ctx: CanvasRenderingContext2D,
+		animate: () => void,
+	}
+
+	type MouseController = {
+		x: number,
+		y: number,
 	}
 }
 
