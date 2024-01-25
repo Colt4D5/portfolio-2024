@@ -24,27 +24,44 @@
     resizeCanvas(canvas);
 
     class Particle {
-      x: number;
-      y: number;
-      radius: number
+      position = {
+        x: 0,
+        y: 0,
+        origX: 0,
+        origY: 0,
+      };
+      radius;
       constructor({ x, y, radius }: {x: number, y: number, radius: number}) {
-        this.x = x;
-        this.y = y;
+        this.position.x = x;
+        this.position.y = y;
+        this.position.origX = x;
+        this.position.origY = y;
         this.radius = radius;
       }
       update() {
-        const xDist = this.x - mouse.x;
-        const yDist = this.y - mouse.y;
+        const xDist = this.position.x - mouse.x;
+        const yDist = this.position.y - mouse.y;
         const distance = Math.sqrt(xDist**2 + yDist**2);
+        const angle = Math.atan2(yDist, xDist);
+        const origXDist = this.position.origX - this.position.x;
+        const origYDist = this.position.origY - this.position.y;
+        const origDistance = Math.sqrt(origXDist**2 + origYDist**2);
+        const origAngle = Math.atan2(origYDist, origXDist);
         if (distance < 200) {
-          this.radius = Math.abs(200 - distance) * 0.02 + 1;
+          this.radius = Math.abs(200 - distance) * 0.01 + 1;
+          if (origDistance < 40) {
+            this.position.x += Math.cos(angle) * 0.5;
+            this.position.y += Math.sin(angle) * 0.5;
+          }
         } else {
+          this.position.x += Math.cos(origAngle) * 1.5;
+          this.position.y += Math.sin(origAngle) * 1.5;
           this.radius = 1;
         }
       }
       draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffffaa';
         ctx.fill();
         ctx.closePath();

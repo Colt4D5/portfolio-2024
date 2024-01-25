@@ -9,8 +9,12 @@ declare global {
 		// interface Platform {}
 	}
 	type Particle = {
-		x: number,
-		y: number,
+		position: {
+			x: number,
+			y: number,
+			origX: number,
+			origY: number,
+		}
 		radius: number,
 		update: () => void,
 		draw: () => void,
