@@ -1,6 +1,21 @@
+<script lang="ts">
+  // Import the types from SvelteKit
+  import type { Page } from '@sveltejs/kit';
+  import { page } from '$app/stores'
+  let path;
+
+  function getPath(currentPath: string) {
+      path = currentPath;
+      console.log(path);
+  }
+
+  $: getPath($page.url.pathname);
+</script>
+
+
 <header>
   <nav
-  class="block w-full px-6 pt-3 pb-6">
+  class="block w-full px-6 pt-3 pb-20">
     <div class="flex items-center justify-between container text-blue-gray-900">
       <a href="#"
         class="active mr-4 block cursor-pointer py-1.5 font-sans text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
@@ -41,7 +56,7 @@
 
 <style>
   nav {
-    background-image: linear-gradient(to bottom, hsl(var(--background) / 1), hsl(var(--background) / 1), hsl(var(--primary) / 0)) !important;
+    background-image: linear-gradient(to bottom, hsl(var(--background-drk) / 1), hsl(var(--background-drk) / 1), hsl(var(--background-drk) / 0)) !important;
     & ul {
       & li {
         & a {

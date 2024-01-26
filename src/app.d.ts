@@ -18,7 +18,7 @@ declare global {
 		radius: number,
 		ctx: CanvasRenderingContext2D,
 		mouse: MouseController,
-		update: () => void,
+		update: (mouseIsOnScreen: boolean) => void,
 		draw: () => void,
 	}
 

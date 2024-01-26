@@ -14,7 +14,7 @@ export class Particle {
     this.mouse = mouse
     this.ctx = ctx;
   }
-  update() {
+  update(mouseIsOnScreen: boolean) {
     // particle distance from mouse
     const xDist = this.position.x - this.mouse.x;
     const yDist = this.position.y - this.mouse.y;
@@ -26,16 +26,25 @@ export class Particle {
     const origYDist = this.position.origY - this.position.y;
     const origDistance = Math.sqrt(origXDist**2 + origYDist**2);
     const origAngle = Math.atan2(origYDist, origXDist);
-    if (distance < 200) {
-      this.radius = Math.abs(200 - distance) * 0.01 + 1;
-      if (origDistance < 40) {
-        this.position.x += Math.cos(angle) * 0.5;
-        this.position.y += Math.sin(angle) * 0.5;
+    const maxDistance = Math.abs(200 - distance) * 0.1;
+    if (mouseIsOnScreen) {
+      if (distance < 200) {
+        this.radius = Math.abs(200 - distance) * 0.01 + 1;
+        if (origDistance < maxDistance) {
+          this.position.x += Math.cos(angle) * 0.5;
+          this.position.y += Math.sin(angle) * 0.5;
+        }
+      } else {
+        this.position.x += Math.cos(origAngle) * 1.5;
+        this.position.y += Math.sin(origAngle) * 1.5;
+        this.radius = 1;
       }
     } else {
-      this.position.x += Math.cos(origAngle) * 1.5;
-      this.position.y += Math.sin(origAngle) * 1.5;
-      this.radius = 1;
+      this.position.x += Math.cos(origAngle) * 0.5;
+      this.position.y += Math.sin(origAngle) * 0.5;
+      if (this.radius > 1) {
+        this.radius -= 0.1;
+      }
     }
   }
   draw() {
