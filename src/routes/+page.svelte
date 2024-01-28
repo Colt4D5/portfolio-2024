@@ -11,7 +11,7 @@
 <section class="py-48"></section>
 
 <style>
-  section:nth-child(odd) {
+  section:nth-child(even) {
     background: linear-gradient(
       to bottom, 
       hsl(var(--background-drk) / 0), 
