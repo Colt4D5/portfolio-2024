@@ -1,7 +1,6 @@
 <script lang="ts">
-  // Import the types from SvelteKit
-  import type { Page } from '@sveltejs/kit';
   import { page } from '$app/stores'
+	import Hero from '$components/Hero.svelte';
   let path;
 
   function getPath(currentPath: string) {
@@ -15,7 +14,7 @@
 
 <header>
   <nav
-  class="block w-full px-6 pt-3 pb-20">
+  class="block w-full px-6 py-3">
     <div class="flex items-center justify-between container text-blue-gray-900">
       <a href="/"
         class="active mr-4 block cursor-pointer py-1.5 text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
@@ -53,9 +52,7 @@
     </div>
   </nav>
 
-  <div id="hero" class="h-[32rem]">
-
-  </div>
+  <Hero />
 </header>
 
 <style>

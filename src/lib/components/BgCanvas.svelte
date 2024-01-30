@@ -8,7 +8,7 @@
   let cvs: HTMLCanvasElement;
   let willAnimate = true;
   
-  $: mouseIsOnScreen = false
+  $: mouseIsOnScreen = true
 
 
   let mouse = {
