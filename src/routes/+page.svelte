@@ -1,3 +1,10 @@
+<script lang="ts">
+	import Hero from '$components/Hero.svelte';
+</script>
+
+
+<Hero />
+
 <section class="py-72"></section>
 
 <section class="py-48"></section>
