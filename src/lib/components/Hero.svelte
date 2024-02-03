@@ -2,7 +2,7 @@
 	import Button from "$components/ui/button/button.svelte";
 
 </script>
-<div id="hero" class="h-[32rem]">
+<div id="hero" class="">
 
   <div class="relative isolate p-6 lg:p-8">
     <div class="mx-auto max-w-2xl pt-24 pb-48">
@@ -26,6 +26,12 @@
 <style>
   #hero {
     background-color: var(--background-drk);
-    background-image: linear-gradient(to bottom, hsl(var(--background-drk) / 1) 0%, 65%, hsl(var(--background-drk) / 1), hsl(var(--background-drk) / 0) 100%) !important;
+    background-image: linear-gradient(
+      to bottom, 
+      hsl(var(--background-drk) / 1) 0%, 
+      65%, 
+      hsl(var(--background-drk) / 1) 85%, 
+      hsl(var(--background-drk) / 0) 100%
+    ) !important;
   }
 </style>

@@ -22,6 +22,23 @@ declare global {
 		draw: () => void,
 	}
 
+	type Point = {
+		position: {
+			x: number,
+			y: number,
+			origX: number,
+			origY: number,
+		}
+		size: {
+			r: number,
+		}
+		delay: number,
+		counter: number,
+		ctx: CanvasRenderingContext2D,
+		update: () => void,
+		draw: () => void,
+	}
+
 	type Canvas = {
 		position: {
 			x: number,
