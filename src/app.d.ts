@@ -57,6 +57,17 @@ declare global {
 		x: number,
 		y: number,
 	}
+
+  namespace svelteHTML {
+    interface HTMLAttributes<T> {
+      'on:viewportEnter'?: (event: CustomEvent) => void
+      'on:viewportExit'?: (event: CustomEvent) => void
+    }
+    interface SVGAttributes<T> {
+      'on:viewportEnter'?: (event: CustomEvent) => void
+      'on:viewportExit'?: (event: CustomEvent) => void
+    }
+  }
 }
 
 export {};

@@ -2,8 +2,8 @@
 	import { onMount } from "svelte";
   import { Point } from "$utils/Point";
 
-  export let width: number;
-  export let height: number;
+  export let width: string;
+  export let height: string;
   export let src: string;
   export let alt: string;
 
@@ -16,8 +16,8 @@
   onMount(() => {
     ctx = <CanvasRenderingContext2D> canvas.getContext('2d');
 
-    canvas.width = width + 64 * 2
-    canvas.height = height + 64 * 2
+    canvas.width = +width + 64 * 2
+    canvas.height = +height + 64 * 2
 
     const cvsSize = [0, 0, canvas.width, canvas.height]
 
@@ -90,16 +90,16 @@
       drawCanvas()
     }, 1000)
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
+    // function resizeCanvas() {
+    //   canvas.width = window.innerWidth
+    //   canvas.height = window.innerHeight
+    // }
   });
   
 </script>
 
 
-<div class={`max-w-[${width}px] max-h-[${height}px] relative`}>
-  <canvas bind:this={canvas} class={`absolute translate-x-[-${padding}px] translate-y-[-${padding}px]`}></canvas>
-  <img class={`img object-cover w-[${width}px] max-h-[${height}px]`} {src} {alt} />
+<div class={`relative`} style={`width: min(100%, ${width}px); height: ${height}px;`}>
+  <canvas bind:this={canvas} class={`absolute`} style={`transform: translate(-${padding}px, -${padding}px)`}></canvas>
+  <img class={`img object-cover`} {src} {alt} style={`width: 100%; height: 100%;`} loading="lazy" />
 </div>
