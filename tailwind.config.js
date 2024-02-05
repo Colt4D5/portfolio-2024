@@ -57,7 +57,10 @@ const config = {
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",
-				background: "hsl(var(--background) / <alpha-value>)",
+				background: {
+					DEFAULT: "hsl(var(--background) / <alpha-value>)",
+					drk: "hsl(var(--background-drk) / <alpha-value>)",
+				},
 				foreground: "hsl(var(--foreground) / <alpha-value>)",
 				primary: {
 					DEFAULT: "hsl(var(--primary) / <alpha-value>)",

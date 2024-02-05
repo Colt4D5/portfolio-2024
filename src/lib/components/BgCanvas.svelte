@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resizeCanvas } from "$utils/utils";
-  import { Particle } from "$utils/Particle";
-  import { Canvas } from "$utils/Canvas";
+  import { Particle } from "$components/classes/Particle";
+  // import { Canvas } from "$components/classes/Canvas";
 	import { browser } from "$app/environment";
 
   let spacing: number = 50;
@@ -30,20 +30,25 @@
     const ctx = <CanvasRenderingContext2D> canvas.getContext('2d');
 
     if (browser) {
-      resizeCanvas(canvas);
+      setTimeout(() => {
+        resizeCanvas(canvas);
+        for (let x = (spacing / 2) * -1; x < window.innerWidth + spacing; x += spacing) {
+          for (let y = (spacing / 2) * -1; y < document.body.getBoundingClientRect().height + (spacing * 4); y += spacing) {
+            particles.push(new Particle({x, y, radius: 1, mouse, ctx}));
+          }
+        }
+      }, 250);
+
+
+      setTimeout(() => {
+        animate(canvas, ctx);
+      }, 250);
     }
 
-    for (let x = (spacing / 2) * -1; x < window.innerWidth + spacing; x += spacing) {
-      for (let y = (spacing / 2) * -1; y < document.body.getBoundingClientRect().height + (spacing * 4); y += spacing) {
-        particles.push(new Particle({x, y, radius: 1, mouse, ctx}));
-      }
-    }
 
-    animate(canvas, ctx);
 
     return {
       destroy() {
-        console.log('bye')
         willAnimate = false
       }
     }

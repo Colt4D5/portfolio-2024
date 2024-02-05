@@ -2,21 +2,19 @@
 	import Button from "$components/ui/button/button.svelte";
 
 </script>
-<div id="hero" class="">
 
-  <div class="relative isolate p-6 lg:p-8">
-    <div class="mx-auto max-w-2xl pt-24 pb-48">
+
+<div id="hero" class="pt-20">
+  <div class="relative isolate lg:p-8">
+    <div class="mx-auto max-w-4xl pt-24 pb-48">
       <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-        <div class="relative rounded-full px-3 py-1 text-sm leading-6 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-          Announcing our next round of funding. <a href="#" class="font-semibold text-fountain-blue-600 hover:text-fountain-blue-500"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
-        </div>
       </div>
       <div class="text-center">
-        <h1 class="text-4xl font-bold tracking-tight text-fountain-blue-600 sm:text-6xl">Data to enrich your online business</h1>
-        <p class="mt-6 text-lg leading-8">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+        <h1 class="text-4xl max-w-2xl mx-auto font-bold tracking-tight sm:text-6xl"><em class="text-primary">Progressive</em> Web Developer</h1>
+        <p class="mt-6 text-lg leading-8">I'm a Web Developer based in sunny southern California, passionate about UX and accessibility specifications. I'm committed to creating performant user-friendly websites, and I look forward to exploring new opportunities to level up my skills.</p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
-          <Button href="/about">Contact Info</Button>
-          <a href="/contact" class="text-sm font-semibold leading-6">About me <span aria-hidden="true">→</span></a>
+          <Button href="/contact">Contact Info</Button>
+          <a href="/about" class="text-sm font-semibold leading-6 hover:text-primary transition-colors">About me <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>

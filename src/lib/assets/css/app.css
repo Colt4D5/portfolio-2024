@@ -82,3 +82,24 @@ body {
 	min-height: 100dvh;
 	background-color: hsl(var(--background));
 }
+
+p {
+	font-weight: 400;
+	margin-bottom: 1rem;
+}
+
+main > section {
+	margin-block: 3rem;
+}
+
+[data-transition="fade-up"] {
+	opacity: 0;
+	transform: translate3d(0, 3rem, 0);
+	transition: opacity 1s ease,
+							transform 1.5s ease;
+}
+
+[data-transition="fade-up"].is-in-view {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+}

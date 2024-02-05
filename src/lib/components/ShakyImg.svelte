@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-  import { Point } from "$utils/Point";
+  import { Point } from "$components/classes/Point";
 
   export let width: string;
   export let height: string;
@@ -18,8 +18,6 @@
 
     canvas.width = +width + 64 * 2
     canvas.height = +height + 64 * 2
-
-    const cvsSize = [0, 0, canvas.width, canvas.height]
 
     let pointsArr: Point[] = []
     let completed = false

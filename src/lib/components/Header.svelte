@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'
 	import Button from '$components/ui/button/button.svelte';
+	import { onMount } from 'svelte';
   let path: string;
 
   function getPath(currentPath: string) {
@@ -12,7 +13,6 @@
 
   function explode(e: MouseEvent): void {
     const link = e?.target as HTMLAnchorElement;
-    const pageName = link.dataset.page;
     const boundingBox = link?.getBoundingClientRect();
     for (let i = 0; i < 25; i++) {
       const pixelClasses = ['pixel','w-1','h-1','absolute'];
@@ -73,12 +73,24 @@
   }
 
   $: getPath($page.url.pathname);
+
+  let scrollY: number;
+  let isScrolled = false;
+
+  function handleFixedHeader(): void {
+    scrollY = window.scrollY
+    isScrolled = scrollY < 50 ? false : true;
+  }
+
+  onMount(() => {
+    handleFixedHeader();
+  })
 </script>
 
 
-<header>
+<header class="bg-background-drk fixed w-full px-6 py-8 z-20 transition-all duration-300 backdrop-blur" class:is-scrolled={isScrolled}>
   <nav
-  class="block w-full px-6 py-3">
+  class="block w-full">
     <div class="flex items-center justify-between container text-blue-gray-900">
       <a href="/"
         class="mr-4 block cursor-pointer py-1.5 text-base font-semibold leading-relaxed tracking-normal text-inherit antialiased">
@@ -116,9 +128,16 @@
 
 </header>
 
+<svelte:window on:scroll={handleFixedHeader} />
+
 <style>
-  header {
-    background-color: hsl(var(--background-drk));
+
+  header.is-scrolled {
+    padding-block: 1rem;
+    --tw-backdrop-blur: blur(8px);
+    background-color: hsla(var(--background-drk) / 0.75);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
   }
 
   a.active {
