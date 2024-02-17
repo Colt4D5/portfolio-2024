@@ -73,7 +73,7 @@
       }
       if (pointsArr.length > 0 && pointCount === 0) {
         completed = true
-        console.log('Is completed!')
+        // console.log('Is completed!')
       }
       
       counter++

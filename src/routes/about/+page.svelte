@@ -1,8 +1,6 @@
 <script lang="ts">
-  import BgCanvas from '$components/BgCanvas.svelte';
+  // import BgCanvas from '$components/BgCanvas.svelte';
 </script>
-
-<BgCanvas />
 
 <section id="about">
   <div class="container">

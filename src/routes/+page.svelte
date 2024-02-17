@@ -1,13 +1,10 @@
 <script lang="ts">
-  import BgCanvas from '$components/BgCanvas.svelte';
 	import Hero from '$components/Hero.svelte';
 	import AboutMe from '$components/AboutMe.svelte';
 	import Performance from '$components/Performance.svelte';
 	import History from '$components/History.svelte';
 	import Skills from '$components/Skills.svelte';
 </script>
-
-<BgCanvas />
 
 <Hero />
 

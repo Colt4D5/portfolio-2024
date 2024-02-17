@@ -44,7 +44,7 @@
 
   let animateIsRunning = false;
 
-  function animate() {
+  async function animate() {
     pixels.forEach((pixel, i) => {
       if (pixel.dataset.yVel) {
         pixel.dataset.yVel = `${+pixel.dataset.yVel + gravity}`;
@@ -65,11 +65,17 @@
         pixels.splice(i, 1);
       }
     })
-    if (pixels.length) {
-      requestAnimationFrame(animate);
-    } else {
-      animateIsRunning = false;
-    }
+
+    const myPromise: Promise<string> = new Promise((resolve,reject) => {
+      if (pixels.length) {
+        requestAnimationFrame(animate);
+      } else {
+        animateIsRunning = false;
+      }
+      resolve("success");
+    });
+
+    return myPromise;
   }
 
   $: getPath($page.url.pathname);

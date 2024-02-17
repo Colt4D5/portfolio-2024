@@ -27,6 +27,6 @@ export class Canvas {
     this.ctx = ctx;
   }
   animate() {
-    console.log('animate');
+    // console.log('animate');
   }
 }
